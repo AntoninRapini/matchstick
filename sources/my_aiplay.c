@@ -5,33 +5,14 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 19:42:55 2017 Antonin Rapini
-** Last update Thu Feb 16 14:02:39 2017 Antonin Rapini
+** Last update Thu Feb 23 11:54:57 2017 Antonin Rapini
 */
 
+#include "my_play.h"
 #include "my_game.h"
 #include "utils.h"
 #include <stdlib.h>
-#include <time.h>
 #include "sources.h"
-#include <stdio.h>
-
-int my_generatenumber(int max)
-{
-  static int	first = 0;
-  int		generated;
-
-  if (!first)
-    {
-      srand(time(NULL));
-      first = 1;
-    }
-  while ((generated = (int)(rand() / (double)RAND_MAX * (max - 1))) < 1)
-    {
-      printf("%i ", generated);
-      fflush(stdout);
-    }
-  return (generated);
-}
 
 void my_printaiplay(int line, int matches)
 {
@@ -42,19 +23,16 @@ void my_printaiplay(int line, int matches)
   my_putchar('\n');
 }
 
-int	my_aiplay(t_game *game)
+int		my_aiplay(t_game *game, t_play playermove)
 {
-  int	matches;
-  int	line;
+  t_play	play;
 
-  line = 0;
-  matches = 0;
+  if (playermove.line != 0)
+    {
+    }
   my_putstr("\nAI's turn...\n");
-  while (my_check_ailine(game, line))
-    line = my_generatenumber(game->lines);
-  while (my_check_airemove(game, line, matches))
-    matches = my_generatenumber(game->maxremove);
-  my_printaiplay(line, matches);
-  my_removematches(game, line, matches);
+  play = my_getaiplay(game);
+  my_printaiplay(play.line, play.matches);
+  my_removematches(game, play.line, play.matches);
   return (my_checkgamestatus(game) != 0 ? 1 : 0);
 }

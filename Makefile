@@ -5,7 +5,7 @@
 ## Login   <antonin.rapini@epitech.net>
 ## 
 ## Started on  Tue Nov 29 08:50:17 2016 Antonin Rapini
-## Last update Thu Feb 16 02:12:00 2017 Antonin Rapini
+## Last update Thu Feb 23 11:40:38 2017 Antonin Rapini
 ##
 
 CFLAGS	+= -Wall -Werror -Wextra
@@ -27,8 +27,8 @@ SRC	=	utils/get_next_line.c	\
 		sources/my_check_lineinput.c	\
 		sources/my_removematches.c	\
 		sources/my_checkgamestatus.c	\
-		sources/my_check_airemove.c	\
-		sources/my_check_ailine.c	\
+		sources/my_getaiplay.c		\
+		sources/special_case.c		\
 		matchstick.c
 
 OBJ	=	$(SRC:.c=.o)
