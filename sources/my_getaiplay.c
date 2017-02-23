@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Feb 20 07:49:30 2017 Antonin Rapini
-** Last update Thu Feb 23 20:21:13 2017 Antonin Rapini
+** Last update Thu Feb 23 20:44:11 2017 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -46,7 +46,7 @@ t_play		my_getaiplay(t_game *game)
   while (i++ < game->lines)
     nimsum = nimsum ^ modinfos[i - 1];
   i = 0;
-  if (!special_case(game, &play, linesleft, nimsum))
+  if (!special_case(game, &play, linesleft))
     {
       if (nimsum != 0)
 	{

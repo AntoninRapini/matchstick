@@ -5,20 +5,19 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 22 13:12:55 2017 Antonin Rapini
-** Last update Thu Feb 23 20:20:58 2017 Antonin Rapini
+** Last update Thu Feb 23 20:43:45 2017 Antonin Rapini
 */
 
 #include "my_game.h"
 #include "my_play.h"
 
-int special_case(t_game *game, t_play *play, int linesleft, int nimsum)
+int special_case(t_game *game, t_play *play, int linesleft)
 {
   int notsingle;
   int i;
 
   i = 0;
   notsingle = 0;
-  if (nimsum){}
   while (i < game->lines)
     {
       if (game->gameinfos[i] > 1)
