@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 02:34:06 2017 Antonin Rapini
-** Last update Thu Feb 23 20:26:50 2017 Antonin Rapini
+** Last update Fri Feb 24 10:47:24 2017 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -18,7 +18,7 @@ void my_printplay(int line, int matches)
 {
   my_putstr("Player removed ");
   my_put_nbr(matches);
-  my_putstr(" matche(es) from line ");
+  my_putstr(" match(es) from line ");
   my_put_nbr(line);
   my_putchar('\n');
 }
