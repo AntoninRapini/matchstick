@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sun Nov 20 00:36:16 2016 Antonin Rapini
-** Last update Wed Feb 15 01:36:06 2017 Antonin Rapini
+** Last update Fri Feb 24 12:03:55 2017 Antonin Rapini
 */
 
 int	my_getnbr_rec(char *str, int nbr, int sign)
@@ -17,7 +17,7 @@ int	my_getnbr_rec(char *str, int nbr, int sign)
   else if (*str == '\0')
     return (nbr * sign);
   else
-    return (0);
+    return (-1);
 }
 
 int	my_getnbr(char *str)
