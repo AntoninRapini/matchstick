@@ -5,12 +5,13 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Jan  2 18:01:21 2017 Antonin Rapini
-** Last update Thu Feb  2 19:07:34 2017 Antonin Rapini
+** Last update Sat Feb 25 14:59:49 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "get_next_line.h"
+#include <stdio.h>
 
 void	my_changebuffer(char *buffer, int size)
 {
@@ -88,7 +89,8 @@ char		*get_next_line(const int fd)
       if (buffer[0] == '\0')
 	{
 	  size = read(fd, buffer, READ_SIZE);
-	  buffer[size] = '\0';
+	  if (size > 0)
+	    buffer[size] = '\0';
 	}
       if (size > 0 && my_fillstr(buffer, &str))
 	return (str);

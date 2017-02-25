@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 02:34:06 2017 Antonin Rapini
-** Last update Fri Feb 24 10:47:24 2017 Antonin Rapini
+** Last update Sat Feb 25 15:02:20 2017 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -13,6 +13,7 @@
 #include "sources.h"
 #include "get_next_line.h"
 #include "my_play.h"
+#include <stdlib.h>
 
 void my_printplay(int line, int matches)
 {
@@ -38,13 +39,13 @@ int		my_play(t_game *game, t_play *play)
 	{
 	  my_putstr("Line: ");
 	  buffer = get_next_line(0);
-	  play->line = my_getnbr(buffer);
+	  play->line = buffer != NULL ? my_getnbr(buffer) : -1;
 	  playing = my_check_lineinput(game, play->line);
 	}
       playing = 1;
       my_putstr("Matches: ");
       buffer = get_next_line(0);
-      play->matches = my_getnbr(buffer);
+      play->matches = buffer != NULL ? my_getnbr(buffer) : -1;
       waitingforplay = my_check_removeinput(game, play->line, play->matches);
     }
   my_printplay(play->line, play->matches);
