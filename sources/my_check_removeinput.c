@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 02:49:18 2017 Antonin Rapini
-** Last update Sat Feb 25 15:02:53 2017 Antonin Rapini
+** Last update Sat Feb 25 15:04:51 2017 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -13,6 +13,11 @@
 
 int my_check_removeinput(t_game *game, int line, int removenbr)
 {
+  if (removenbr == -2)
+    {
+      my_putstr("\nError: invalid input (positive number expected)\n");
+      return (1);
+    }
   if (removenbr < 0)
     {
       my_putstr("Error: invalid input (positive number expected)\n");
