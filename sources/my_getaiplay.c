@@ -5,15 +5,16 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Feb 20 07:49:30 2017 Antonin Rapini
-** Last update Thu Feb 23 20:44:11 2017 Antonin Rapini
+** Last update Sat Feb 25 14:16:22 2017 Antonin Rapini
 */
 
 #include "my_game.h"
 #include "my_play.h"
 #include "sources.h"
+#include "my_gamestatus.h"
 #include <stdlib.h>
 
-void getmoduloinfos(int maxremove, int size, int *infos, int *modinfos)
+void	getmoduloinfos(int maxremove, int size, int *infos, int *modinfos)
 {
   int	i;
 
@@ -25,47 +26,51 @@ void getmoduloinfos(int maxremove, int size, int *infos, int *modinfos)
     }
 }
 
+void	my_get_gameinfos(t_game *game, t_gamestatus *status)
+{
+  int	i;
+
+  i = 0;
+  status->nimsum = 0;
+  status->linesleft = 0;
+  status->notsingle = 0;
+  while (i < game->lines)
+    {
+      if (game->gameinfos[i] > 0)
+	status->linesleft++;
+      if (game->gameinfos[i] > 1)
+	status->notsingle++;
+      status->nimsum = status->nimsum ^ status->modinfos[i];
+      i++;
+    }
+  
+}
+
 t_play		my_getaiplay(t_game *game)
 {
   int		i;
-  int		nimsum;
   t_play	play;
-  int		linesleft;
-  static int	*modinfos = NULL;
+  t_gamestatus	status;
 
-  if (modinfos == NULL)
-    modinfos = malloc(sizeof(int) * game->lines);
-  getmoduloinfos(game->maxremove, game->lines, game->gameinfos, modinfos);
   i = 0;
-  linesleft = 0;
-  nimsum = 0;
-  while (i++ < game->lines)
-    if (game->gameinfos[i - 1] > 0)
-      linesleft++;
-  i = 0;
-  while (i++ < game->lines)
-    nimsum = nimsum ^ modinfos[i - 1];
-  i = 0;
-  if (!special_case(game, &play, linesleft))
+  status.modinfos = malloc(sizeof(int) * game->lines);
+  getmoduloinfos(game->maxremove, game->lines, game->gameinfos, status.modinfos);
+  my_get_gameinfos(game, &status);
+  if (status.notsingle <= 1)
+    special_case(game, &play, &status);
+  else if (status.nimsum != 0)
     {
-      if (nimsum != 0)
+      while (i < game->lines)
 	{
-	  while (i < game->lines)
-	    {
-	      if ((nimsum ^ modinfos[i]) < modinfos[i])
-		break;
-	      i++;
-	    }
-	  play.line = i + 1;
-	  play.matches = modinfos[i] - (modinfos[i] ^ nimsum);
+	  if ((status.nimsum ^ status.modinfos[i]) < status.modinfos[i])
+	    break;
+	  i++;
 	}
-      else
-	{
-	  while (game->gameinfos[i] == 0)
-	    i++;
-	  play.line = i + 1;
-	  play.matches = 1;
-	}
+      my_fillplay(&play, i + 1,
+		  status.modinfos[i] - (status.modinfos[i] ^ status.nimsum));
     }
+  else
+    my_fillplay(&play, findfirstvalid(game), 1);
+  free(status.modinfos);
   return (play);
 }
