@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 02:00:02 2017 Antonin Rapini
-** Last update Sun Feb 26 12:32:28 2017 Antonin Rapini
+** Last update Sun Feb 26 12:42:42 2017 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -16,18 +16,17 @@
 int		my_gameloop(t_game *game)
 {
   int		gamestatus;
-  t_play	playermove;
 
   gamestatus = 0;
   my_show_wordtab(game->map);
   while (gamestatus == 0)
     {
-      gamestatus = my_play(game, &playermove);
+      gamestatus = my_play(game);
       if (gamestatus != 3)
 	my_show_wordtab(game->map);
       if (gamestatus == 0)
 	{
-	  gamestatus = my_aiplay(game, playermove);
+	  gamestatus = my_aiplay(game);
 	  my_show_wordtab(game->map);
 	}
     }

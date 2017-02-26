@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 01:48:16 2017 Antonin Rapini
-** Last update Sat Feb 25 14:17:04 2017 Antonin Rapini
+** Last update Sun Feb 26 12:44:23 2017 Antonin Rapini
 */
 
 #ifndef SOURCES_H_
@@ -19,8 +19,8 @@ t_game *my_create_game(char *, char *);
 char **my_create_map(int);
 int *my_create_gameinfos(int);
 int my_gameloop(t_game *);
-int my_play(t_game *, t_play *);
-int my_aiplay(t_game *, t_play);
+int my_play(t_game *);
+int my_aiplay(t_game *);
 int my_check_removeinput(t_game *, int, int);
 int my_check_lineinput(t_game *, int);
 void my_removematches(t_game *, int, int);
