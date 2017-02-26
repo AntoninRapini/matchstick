@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Feb 13 18:16:08 2017 Antonin Rapini
-** Last update Thu Feb 16 02:18:02 2017 Antonin Rapini
+** Last update Sun Feb 26 12:58:23 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -27,7 +27,7 @@ void	my_fillmap(char **map, int lines, int linesize)
 	  else
 	    {
 	      if (j > (linesize / 2) - i
-		  && j < (linesize  / 2) + i)
+		  && j < (linesize / 2) + i)
 		map[i][j] = '|';
 	      else
 		map[i][j] = ' ';

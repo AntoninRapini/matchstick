@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 02:49:18 2017 Antonin Rapini
-** Last update Sat Feb 25 15:04:29 2017 Antonin Rapini
+** Last update Sun Feb 26 12:53:50 2017 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -13,11 +13,6 @@
 
 int my_check_lineinput(t_game *game, int line)
 {
-  if (line == -2)
-    {
-      my_putstr("\nError: invalid input (positive number expected)\n");
-      return (1);
-    }
   if (line < 0)
     {
       my_putstr("Error: invalid input (positive number expected)\n");

@@ -5,17 +5,16 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 02:00:02 2017 Antonin Rapini
-** Last update Sun Feb 26 12:42:42 2017 Antonin Rapini
+** Last update Sun Feb 26 12:54:52 2017 Antonin Rapini
 */
 
 #include "my_game.h"
 #include "utils.h"
 #include "sources.h"
-#include "my_play.h"
 
-int		my_gameloop(t_game *game)
+int	my_gameloop(t_game *game)
 {
-  int		gamestatus;
+  int	gamestatus;
 
   gamestatus = 0;
   my_show_wordtab(game->map);
