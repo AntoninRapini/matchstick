@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 02:00:02 2017 Antonin Rapini
-** Last update Thu Feb 23 13:48:22 2017 Antonin Rapini
+** Last update Sun Feb 26 12:32:28 2017 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -23,7 +23,8 @@ int		my_gameloop(t_game *game)
   while (gamestatus == 0)
     {
       gamestatus = my_play(game, &playermove);
-      my_show_wordtab(game->map);
+      if (gamestatus != 3)
+	my_show_wordtab(game->map);
       if (gamestatus == 0)
 	{
 	  gamestatus = my_aiplay(game, playermove);
@@ -32,7 +33,9 @@ int		my_gameloop(t_game *game)
     }
   if (gamestatus == 1)
     my_putstr("I lost... snif... but i'll get you next time!!\n");
-  else
+  else if (gamestatus == 2)
     my_putstr("You lost, too bad...\n");
+  else if (gamestatus == 3)
+    return (0);
   return (gamestatus);
 }

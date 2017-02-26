@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Feb 15 02:34:06 2017 Antonin Rapini
-** Last update Sat Feb 25 15:03:55 2017 Antonin Rapini
+** Last update Sun Feb 26 12:31:42 2017 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -39,13 +39,17 @@ int		my_play(t_game *game, t_play *play)
 	{
 	  my_putstr("Line: ");
 	  buffer = get_next_line(0);
-	  play->line = buffer != NULL ? my_getnbr(buffer) : -2;
+	  if (buffer == NULL)
+	    return (3);
+	  play->line = my_getnbr(buffer);
 	  playing = my_check_lineinput(game, play->line);
 	}
       playing = 1;
       my_putstr("Matches: ");
       buffer = get_next_line(0);
-      play->matches = buffer != NULL ? my_getnbr(buffer) : -2;
+      if (buffer == NULL)
+	return (3);
+      play->matches = my_getnbr(buffer);
       waitingforplay = my_check_removeinput(game, play->line, play->matches);
     }
   my_printplay(play->line, play->matches);
